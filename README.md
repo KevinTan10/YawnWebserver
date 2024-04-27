@@ -24,7 +24,7 @@ if (i < 0) {
 
 ![image](https://github.com/KevinTan10/YawnWebserver/assets/101052771/0735d070-fd3b-4789-8949-9b0596514382)
 
-YawnWebserver的优势：
+### YawnWebserver的优势：
 
 1、多进程，无需锁
 
@@ -32,7 +32,7 @@ YawnWebserver的优势：
 
 3、协程，异步代码更加直观
 
-YawnWebserver的劣势：
+### YawnWebserver的劣势：
 
 1、仅为丐版，暂未实现日志和数据库连接（但保证了压测时公平，关闭了TinyWebServer的日志，获取html也不涉及数据库连接）
 
@@ -40,7 +40,7 @@ YawnWebserver的劣势：
 
 3、没有以守护进程方式运行
 
-TinyWebServer性能差的原因：
+### TinyWebServer性能差的原因：
 
 1、TinyWebServer的Reactor并没有真正借助多线程，可以观察到任务队列长度永远不会大于1。这是因为主线程在一个循环中等待，即做了同步操作，这是为了在短连接情况下移除定时器并关闭连接，然而，正确的做法应该是给定时器加锁，在工作线程函数中移除定时器，而不是让主线程等待来执行移除。
 
